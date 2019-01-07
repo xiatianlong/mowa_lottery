@@ -112,12 +112,13 @@ $(function () {
      */
     let removeSelectedData = function () {
         // 已选出的元素
-        for (let i = 0; i < dataArr.length; i++) {
-
-            let lotteryResult = localStorage.getItem("lotteryResult");
-            if (lotteryResult) {
-                lotteryResult = JSON.parse(lotteryResult);
-                for (let j = 0; j < lotteryResult.length; j++) {
+        let lotteryResult = localStorage.getItem("lotteryResult");
+        if (lotteryResult) {
+            lotteryResult = JSON.parse(lotteryResult);
+            for (let j = 0; j < lotteryResult.length; j++) {
+                console.log("j : " + j);
+                for (let i = 0; i < dataArr.length; i++) {
+                    console.log("i : " + i);
                     if (dataArr[i] === lotteryResult[j].user) {
                         dataArr.splice(i, 1);
                     }
