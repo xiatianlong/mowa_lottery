@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html, body{
+            height: 100%;
+        }
+        #content{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            background: lightcoral;
+        }
+        #lotteryContent{
+            width: 700px;
+            margin: 50px auto;
+        }
+        #title{
+            text-align: center;
+            font-size: 30px;
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
+        #doing{
+            height: 50px;
+            background: coral;
+            text-align: center;
+            line-height: 50px;
+            color: #ffffff;
+            font-size: 26px;
+        }
+        #result{
+            height: 500px;
+            background: rgba(255,255,255,.4);
+        }
+        #result span{
+            display: inline-block;
+            width: 25%;
+            text-align: center;
+            margin-top: 35px;
+            font-size: 22px;
+            font-weight: 600;
+            color: red;
+        }
+        #btns{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn{
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+            background: #ff5d3e;
+            color: #fff;
+            font-size: 16px;
+        }
+        #zuixingxi_footer{
+            position: fixed;
+            left: 0;
+            text-align: center;
+            bottom: 10px;
+            width: 100%;
+            color: #ffffff;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="content">
+
+    <div id="lotteryContent">
+        <div id="title">最星系抽奖</div>
+        <div id="doing">...</div>
+        <div id="result"></div>
+        <div id="btns">
+            <button class="btn" id="beginBtn">开始</button>
+            <button class="btn" id="endBtn" style="display: none">停止</button>
+            <a href="javascript:;" id="clearBtn">全部清除</a>
+        </div>
+    </div>
+
+
+</div>
+<div id="zuixingxi_footer">由最星系技术团队提供服务支持</div>
+
+<script src="./js/jquery.3.3.1.js"></script>
+<script src="./js/lottery2.js"></script>
+<script src="./js/data.js"></script>
+</body>
+</html>
