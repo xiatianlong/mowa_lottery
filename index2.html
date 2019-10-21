@@ -10,6 +10,7 @@
         }
         html, body{
             height: 100%;
+            overflow-y: auto;
         }
         #content{
             position: absolute;
@@ -21,14 +22,14 @@
             background: lightcoral;
         }
         #lotteryContent{
-            width: 700px;
-            margin: 50px auto;
+            width: 880px;
+            margin: 20px auto;
         }
         #title{
             text-align: center;
-            font-size: 30px;
+            font-size: 28px;
             color: #ffffff;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
         #doing{
             height: 50px;
@@ -39,12 +40,13 @@
             font-size: 26px;
         }
         #result{
-            height: 500px;
+            height: 420px;
+            overflow-y: auto;
             background: rgba(255,255,255,.4);
         }
         #result span{
             display: inline-block;
-            width: 25%;
+            width: 20%;
             text-align: center;
             margin-top: 35px;
             font-size: 22px;
@@ -76,6 +78,16 @@
             color: #ffffff;
             font-size: 13px;
         }
+        #lotteryTypeContent span{
+            display: inline-block;
+            width: 24%;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        #lotteryTypeContent span:hover{
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -84,6 +96,12 @@
 
     <div id="lotteryContent">
         <div id="title">最星系抽奖</div>
+        <div id="lotteryTypeContent">
+            <span><input type="radio" name="lotteryType" id="lotteryType1" value="lotteryType1"> <label for="lotteryType1">联创网红输送(20)</label></span>
+            <span><input type="radio" name="lotteryType" id="lotteryType2" value="lotteryType2"> <label for="lotteryType2">CEO网红输送(2)</label></span>
+            <span><input type="radio" name="lotteryType" id="lotteryType3" value="lotteryType3"> <label for="lotteryType3">体验官(1)</label></span>
+            <span><input type="radio" name="lotteryType" id="lotteryType4" value="lotteryType4"> <label for="lotteryType4">年会名额(1)</label></span>
+        </div>
         <div id="doing">...</div>
         <div id="result"></div>
         <div id="btns">

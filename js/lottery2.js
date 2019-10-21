@@ -9,16 +9,32 @@ $(function () {
     // 启停开关
     let doing;
     // 初始化总数据
-    let dataArr = data.concat(cheat);
+    let dataArr = data.concat(cheat).concat(cheat2).concat(cheat3);
     // cheat
     let cheatArr= cheat;
+    let cheatArr2= cheat2;
+    let cheatArr3= cheat3;
+    // type
+    let type = null;
 
 
+    /**
+     * 抽奖类型选择
+     */
+    $("input[name='lotteryType']").on('change', function(){
+        type = $(this).val();
+        showLuckyList();
+    });
 
     /**
      * 开始按钮点击
      */
     $("#beginBtn").on('click', function () {
+
+        if (type == null){
+            alert("请选择抽奖类型");
+            return;
+        }
 
         // 按钮控制
         $(this).hide();
@@ -50,7 +66,7 @@ $(function () {
         // 从cheatArr里拿一个人中奖
         let cheatUser = getAcheatUser();
         $("#doing").text("中奖人：" + cheatUser);
-        lotteryResult.push(cheatUser);
+        lotteryResult.push({"type": type, "user": cheatUser});
         localStorage.setItem("lotteryResult", JSON.stringify(lotteryResult));
 
         showLuckyList();
@@ -66,12 +82,41 @@ $(function () {
             lotteryResult = JSON.stringify([]);
         }
         lotteryResult = JSON.parse(lotteryResult);
-        for (let i = 0; i < cheatArr.length; i++){
-            if (lotteryResult.indexOf(cheatArr[i]) < 0){
-                return cheatArr[i];
-            }
-
+        let resultArr = [];
+        for (let i = 0; i < lotteryResult.length; i++){
+            resultArr.push(lotteryResult[i].type + "-" + lotteryResult[i].user)
         }
+        if (type === "lotteryType1"){
+            for (let i = 0; i < cheatArr.length; i++){
+                if (resultArr.indexOf("lotteryType1-" + cheatArr[i]) < 0){
+                    return cheatArr[i];
+                }
+
+            }
+        }
+        if (type === "lotteryType2"){
+            for (let i = 0; i < cheatArr2.length; i++){
+                if (resultArr.indexOf("lotteryType2-" + cheatArr2[i]) < 0){
+                    return cheatArr2[i];
+                }
+
+            }
+        }
+        if (type === "lotteryType3"){
+            for (let i = 0; i < cheatArr3.length; i++){
+                if (resultArr.indexOf("lotteryType3-" + cheatArr3[i]) < 0){
+                    return cheatArr3[i];
+                }
+
+            }
+        }
+        if (type === "lotteryType4"){
+            // 产生随机数
+            let randomNum = Math.floor(Math.random() * dataArr.length);
+            // 产生中奖人
+            return dataArr[randomNum];
+        }
+
         return "无中奖人";
 
     }
@@ -106,9 +151,15 @@ $(function () {
         let lotteryResult = localStorage.getItem("lotteryResult");
         if (lotteryResult) {
             lotteryResult = JSON.parse(lotteryResult);
+            for (let i = 0; i < lotteryResult.length; i++){
+                if(lotteryResult[i].type !== type){
+                    lotteryResult.splice(i, 1); // 将使后面的元素依次前移，数组长度减1
+                    i--;
+                }
+            }
             $("#result").empty();
             for (let i = 0; i < lotteryResult.length; i++) {
-                $("#result").append('<span>' + lotteryResult[i] + '</span>')
+                $("#result").append('<span>' + lotteryResult[i].user + '</span>')
             }
         }
     };
